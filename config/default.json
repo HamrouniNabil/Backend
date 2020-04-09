@@ -1,0 +1,4 @@
+{
+    "mongoURI" : "mongodb+srv://dbNabil:Andjusticeforall2019@cluster0-m12vs.mongodb.net/contact_db?retryWrites=true&w=majority",
+    "secretOrKey": "Mysecret"
+}
