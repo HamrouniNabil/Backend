@@ -1,7 +1,7 @@
 const express = require('express');
-const connectDB = require('./config/connectDB');
-const user = require('./routes/user')
-const pitch = require('./routes/pitch')
+const { connectDB } = require('./config/connectDB');
+const user = require('./routes/user');
+const pitch = require('./routes/pitch');
 
 const app = express();
 
@@ -14,6 +14,4 @@ app.use('/', pitch);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT , err =>
-    err ? console.log('err') : console.log(`Server is Running on Port ${PORT}`)
-    )
+app.listen(PORT, (err) => (err ? console.log('err') : console.log(`Server is Running on Port ${PORT}`)));
