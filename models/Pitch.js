@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 
-
 const pitchSchema = new mongoose.Schema({
   name: { type: String, required: true },
   adresse: { type: String, required: true },
@@ -11,7 +10,6 @@ const pitchSchema = new mongoose.Schema({
   capacite: { type: Number, required: true },
   prix: { type: String, required: true },
   image: { type: String },
-
 });
 
 module.exports.Pitch = mongoose.model('pitch', pitchSchema);
