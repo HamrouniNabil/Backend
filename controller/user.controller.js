@@ -1,18 +1,21 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const config = require("config");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const { User } = require('../models/User');
 
-const secretOrKey = config.get("secretOrKey");
+const secretOrKey = config.get('secretOrKey');
 
-module.exports = userController = {
+module.exports.userController = {
   register: async (req, res) => {
-    const { email, name, password, phone, role } = req.body;
+    const {
+      email, name, password, phone, role,
+    } = req.body;
     try {
       const searchResult = await User.findOne({ email });
-
-      if (searchResult)
-        return res.status(400).json({ errors: "User already Exist " });
+      if (searchResult) {
+        res.status(400).json({ errors: 'User already Exist ' });
+        return;
+      }
       const newUser = new User({
         email,
         name,
@@ -43,12 +46,17 @@ module.exports = userController = {
     const { email, password } = req.body;
     try {
       const searchResult = await User.findOne({ email });
-      if (!searchResult)
-        return res.status(400).json({ errors: "Email not found" });
-
+      if (!searchResult) {
+        res.status(400).json({ errors: 'Email not found' });
+        return;
+      }
       const isMatch = await bcrypt.compare(password, searchResult.password);
-      if (!isMatch) return res.status(400).json({ errors: "Bad Password" });
+      if (!isMatch) {
+        res.status(400).json({ errors: 'Bad Password' });
+        return;
+      }
       const payload = {
+        /* eslint-disable */
         id: searchResult._id,
         name: searchResult.name,
         email: searchResult.email,
