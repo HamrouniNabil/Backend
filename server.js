@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDB = require('./config/connectDB');
+const {connectDB} = require('./config/connectDB');
 const user = require('./routes/user')
 const pitch = require('./routes/pitch')
 

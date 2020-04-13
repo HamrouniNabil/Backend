@@ -17,7 +17,7 @@
     "passport-jwt": "^4.0.0",
     "validator": "^13.0.0"
   },
-  "script": {
+  "scripts": {
     "start": "nodemon server.js"
   }
 }

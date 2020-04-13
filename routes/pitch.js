@@ -25,7 +25,7 @@ Router.get("/pitchs",(req,res)=>{
     .catch(err=>console.log(err))
 })
 
-Route.get("/getOnePitch/:_id",(req,res)=>{
+Router.get("/getOnePitch/:_id",(req,res)=>{
     const {_id}= req.params;
     Pitch.findOne({_id})
     .then(Pitchs=>res.send(Pitchs))
@@ -39,7 +39,7 @@ Router.delete("/delete-pitch/:_id",(req,res)=>{
     .catch(err=>console.log(err))
 })
 
-Route.put("/edit-pitch/:_id",(req,res)=>{
+Router.put("/edit-pitch/:_id",(req,res)=>{
     const {_id}= req.params;
     const {name,adresse,phone1,phone2,email,capacite,prix,image} =req.body;
     Pitch.findOneAndUpdate({_id}, {$set:{ name,adresse,phone1,phone2,email,capacite,prix,image }})
